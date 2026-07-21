@@ -11,7 +11,7 @@ static const struct gpio_dt_spec red_led = GPIO_DT_SPEC_GET(RED_LED_NODE, gpios)
 
 int main(void)
 {
-        int n = 10, l = 11;
+        int n = 10;
         int ret_bl, ret_rl, ret_b;
         bool led_state = true;
 	if (!gpio_is_ready_dt(&blue_led) || !gpio_is_ready_dt(&red_led) || !gpio_is_ready_dt(&button) ){
@@ -26,9 +26,9 @@ int main(void)
                 return 0;
                 }
         while (true){
-		bool inpt=0;
-                inpt = gpio_pin_get_dt(&button);
-                if (inpt==1){
+		bool inpt_start=0;
+                inpt_start = gpio_pin_get_dt(&button);
+                if (inpt_start==1){
                         while (n) {
                                 printf("T Minus %d \n", n);
                                 k_msleep(1000);
@@ -36,7 +36,7 @@ int main(void)
                         }
                         ret_bl = gpio_pin_configure_dt(&blue_led, GPIO_OUTPUT_ACTIVE);
 			ret_rl = gpio_pin_configure_dt(&red_led, GPIO_OUTPUT_INACTIVE);
-                        while (l){
+                        while (true){
                                 ret_bl = gpio_pin_toggle_dt(&blue_led);
 				ret_rl = gpio_pin_toggle_dt(&red_led);
                                 if(ret_bl<0 || ret_rl<0){
@@ -44,7 +44,6 @@ int main(void)
                                 }
                                 led_state = !led_state;
                                 k_msleep(500);
-                                l --;
                         }
                 }
         }
