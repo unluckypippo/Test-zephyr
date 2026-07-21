@@ -13,6 +13,11 @@ int main(void)
         int n = 10, l = 11;
         int ret_l, ret_b;
         bool led_state = true;
+	if (!gpio_is_ready_dt(&led) || !gpio_is_ready_dt(&button) ){
+		printf("dispositivi non pronti \n");
+		return 0;
+	}
+
         ret_b = gpio_pin_configure_dt(&button, GPIO_INPUT);
         printf("Test countdown \n");
         printf("Premi il pulsante user per iniziare il test\n");
