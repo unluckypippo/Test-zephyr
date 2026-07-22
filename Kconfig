@@ -24,7 +24,7 @@ config APP_MODULE_BLINK
 
 config APP_MODULE_BLINK_PERIOD_MS
 	int "Periodo di lampeggio (ms)"
-	depends on APP_MODULE_LED_BLINK
+	depends on APP_MODULE_BLINK
 	default 500
 
 config APP_MODULE_BUTTON_I
@@ -32,6 +32,13 @@ config APP_MODULE_BUTTON_I
 	depends on GPIO
 	help
 	  Reagisce a sw0 tramite callback invece che polling.
+	  
+config APP_MODULE_TEMP
+	bool "Lettura temperatura del die da pulsante"
+	depends on GPIO
+	help
+	  Legge il sensore di temperatura interno alla pressione di sw0.
+	  Copre: Sensor API, sensor_sample_fetch/channel_get, struct sensor_value.
 	  
 
 endmenu

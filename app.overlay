@@ -1,0 +1,7 @@
+&adc1 {
+	status = "okay";
+};
+
+&die_temp {
+	status = "okay";
+};

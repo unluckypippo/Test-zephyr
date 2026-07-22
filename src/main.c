@@ -21,6 +21,11 @@ int main(void)
 	module_button_i_run();
 #endif
 
+#ifdef CONFIG_APP_MODULE_TEMP
+	printk("Modulo attivo: temp_read\n");
+	module_temp_read_run();
+#endif
+
 	printk("Nessun modulo attivo\n");
 	return 0;
 }

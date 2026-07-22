@@ -17,6 +17,7 @@ Test-zephyr/
 ├── CMakeLists.txt          # build; include i moduli con target_sources_ifdef
 ├── Kconfig                 # opzioni CONFIG_APP_MODULE_* (+ source Kconfig.zephyr)
 ├── prj.conf                # quale modulo è attivo in questa build
+├── app.overlay		    # modifica configurazioni hardware senza modificare il DT originale
 ├── README.md
 └── src/
     ├── main.c              # dispatcher: chiama il modulo abilitato
@@ -24,7 +25,9 @@ Test-zephyr/
     └── modules/
         ├── countdown.c     # countdown da pulsante + LED rosso/blu alternati
         ├── led_blink.c     # blink base
+	├── temp_read.c	    # stampa la temperatura del chip  
         └── button_irq.c    # pulsante a interrupt,  debounce, semaforo
+
 ```
 
 
