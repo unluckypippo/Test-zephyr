@@ -1,0 +1,39 @@
+# Opzioni specifiche di questa applicazione.
+# ATTENZIONE: "source Kconfig.zephyr" alla fine e' obbligatorio.
+
+menu "Test Zephyr - moduli di apprendimento"
+
+config APP_MODULE_COUNTDOWN
+	bool "Countdown avviato da pulsante"
+	depends on GPIO
+	help
+	  Attende la pressione di sw0, esegue un countdown lampeggiando il LED
+	  verde, poi alterna rosso/blu all'infinito.
+
+config APP_MODULE_COUNTDOWN_START
+	int "Valore iniziale del countdown"
+	depends on APP_MODULE_COUNTDOWN
+	default 10
+	range 1 60
+
+config APP_MODULE_LED_BLINK
+	bool "Blink semplice su led0"
+	depends on GPIO
+	help
+	  Lampeggio base di led0. 
+
+config APP_MODULE_BLINK_PERIOD_MS
+	int "Periodo di lampeggio (ms)"
+	depends on APP_MODULE_LED_BLINK
+	default 500
+
+config APP_MODULE_BUTTON_I
+	bool "Pulsante gestito a interrupt"
+	depends on GPIO
+	help
+	  Reagisce a sw0 tramite callback invece che polling.
+	  
+
+endmenu
+
+source "Kconfig.zephyr"
