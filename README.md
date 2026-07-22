@@ -11,6 +11,7 @@ Le funzionalità sono isolate tra loro e attivabili tramite kconfig.
 Nucleo L552ZE-Q della STMicroelettronics
 
 ## Struttura del Progetto
+```bash
 
 Test-zephyr/
 ├── CMakeLists.txt          # build; include i moduli con target_sources_ifdef
@@ -24,6 +25,8 @@ Test-zephyr/
         ├── countdown.c     # countdown da pulsante + LED rosso/blu alternati
         ├── led_blink.c     # blink base
         └── button_irq.c    # pulsante a interrupt,  debounce, semaforo
+```
+
 
 ## Build ed Esecuzione
 ```bash
