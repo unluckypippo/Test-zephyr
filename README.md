@@ -25,7 +25,7 @@ Test-zephyr/
     └── modules/
         ├── countdown.c     # countdown da pulsante + LED rosso/blu alternati
         ├── led_blink.c     # blink base
-	├── temp_read.c	    # stampa la temperatura del chip  
+		├── temp_read.c	    # stampa la temperatura del chip  
         └── button_irq.c    # pulsante a interrupt,  debounce, semaforo
 
 ```
