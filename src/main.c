@@ -23,7 +23,7 @@ int main(void)
 
         ret_b = gpio_pin_configure_dt(&button, GPIO_INPUT);
 	ret_gl = gpio_pin_configure_dt(&green_led, GPIO_OUTPUT_ACTIVE);
-        printf("Test countdown \n");
+	printf("Test countdown \n");
         printf("Premi il pulsante user per iniziare il test\n");
         if (ret_b<0){
                 return 0;
