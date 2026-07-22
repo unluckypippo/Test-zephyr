@@ -5,18 +5,18 @@
 
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 
-void module_led_blink_run(void)
+void module_blink_run(void)
 {
 	if (!gpio_is_ready_dt(&led)) {
 		printk("led0 non pronto\n");
-		return 0;
+		return;
 	}
 	if (gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE) < 0) {
-		return 0;
+		return;
 	}
 	while (true) {
 		gpio_pin_toggle_dt(&led);
-		k_msleep(CONFIG_APP_MODULE_BLINK_PERIOD_MS);
+		k_msleep(500);
 	}
 }
 

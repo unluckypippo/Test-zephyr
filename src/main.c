@@ -11,9 +11,9 @@ int main(void)
 	module_countdown_run();
 #endif
 
-#ifdef CONFIG_APP_MODULE_LED_BLINK
-	printk("Modulo attivo: led_blink\n");
-	module_led_blink_run();
+#ifdef CONFIG_APP_MODULE_BLINK
+	printk("Modulo attivo: blink\n");
+	module_blink_run();
 #endif
 
 #ifdef CONFIG_APP_MODULE_BUTTON_I

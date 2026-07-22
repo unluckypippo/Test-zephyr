@@ -5,8 +5,8 @@
 void module_countdown_run(void);
 #endif
 
-#ifdef CONFIG_APP_MODULE_LED_BLINK
-void module_led_blink_run(void);
+#ifdef CONFIG_APP_MODULE_BLINK
+void module_blink_run(void);
 #endif
 
 #ifdef CONFIG_APP_MODULE_BUTTON_I

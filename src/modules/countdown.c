@@ -30,20 +30,21 @@ void module_countdown_run(void)
 	}
 	printk("Test countdown\n");
 	printk("Premi il pulsante user per iniziare il test\n");
-	if(gpio_pin_get_dt(&button)){
-		while (n) {
-			printk("T Minus %d\n", n);
-			gpio_pin_toggle_dt(&green_led);
-			k_msleep(1000);
-			n--;
-		}
-		gpio_pin_configure_dt(&green_led, GPIO_OUTPUT_INACTIVE);
-		gpio_pin_configure_dt(&blue_led, GPIO_OUTPUT_ACTIVE);
-		gpio_pin_configure_dt(&red_led, GPIO_OUTPUT_INACTIVE);
-		while (true) {
-			gpio_pin_toggle_dt(&blue_led);
-			gpio_pin_toggle_dt(&red_led);
-			k_msleep(500);
-		}
+	while (gpio_pin_get_dt(&button) != 1){
+		k_msleep(10);
+	}
+	while (n) {
+		printk("T Minus %d\n", n);
+		gpio_pin_toggle_dt(&green_led);
+		k_msleep(1000);
+		n--;
+	}
+	gpio_pin_configure_dt(&green_led, GPIO_OUTPUT_INACTIVE);
+	gpio_pin_configure_dt(&blue_led, GPIO_OUTPUT_ACTIVE);
+	gpio_pin_configure_dt(&red_led, GPIO_OUTPUT_INACTIVE);
+	while (true) {
+		gpio_pin_toggle_dt(&blue_led);
+		gpio_pin_toggle_dt(&red_led);
+		k_msleep(500);
 	}
 }

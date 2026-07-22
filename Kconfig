@@ -16,7 +16,7 @@ config APP_MODULE_COUNTDOWN_START
 	default 10
 	range 1 60
 
-config APP_MODULE_LED_BLINK
+config APP_MODULE_BLINK
 	bool "Blink semplice su led0"
 	depends on GPIO
 	help
