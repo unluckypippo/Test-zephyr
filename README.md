@@ -14,20 +14,21 @@ Nucleo L552ZE-Q della STMicroelettronics
 ```bash
 
 Test-zephyr/
-├── CMakeLists.txt          # build; include i moduli con target_sources_ifdef
-├── Kconfig                 # opzioni CONFIG_APP_MODULE_* (+ source Kconfig.zephyr)
-├── prj.conf                # quale modulo è attivo in questa build
-├── app.overlay		        # modifica configurazioni hardware senza modificare il DT originale
+├── CMakeLists.txt             # build; include i moduli con target_sources_ifdef
+├── Kconfig                    # opzioni CONFIG_APP_MODULE_* (+ source Kconfig.zephyr)
+├── prj.conf                   # quale modulo è attivo in questa build
+├── app.overlay		           # modifica configurazioni hardware senza modificare il DT originale
 ├── README.md
 └── src/
-    ├── main.c              # dispatcher: chiama il modulo abilitato
-    ├── modules.h           # moduli
+    ├── main.c                 # dispatcher: chiama il modulo abilitato
+    ├── modules.h              # moduli
     └── modules/
-        ├── countdown.c     # countdown da pulsante + LED rosso/blu alternati
-        ├── blink.c         # blink base
-		├── temp_read.c	    # temperatura del die via Sensor API  
-        ├── button_i.c      # pulsante a interrupt,  debounce, semaforo
-        └── thread_mg.c     # thread statico con K_THREAD_DEFINE, blink + contatore
+        ├── countdown.c        # countdown da pulsante + LED rosso/blu alternati
+        ├── blink.c            # blink base
+		├── temp_read.c	       # temperatura del die via Sensor API  
+        ├── button_i.c         # pulsante a interrupt,  debounce, semaforo
+        ├── thread_mg.c        # thread statico con K_THREAD_DEFINE, blink + contatore
+        └── logging_system.c   # messaggi log a vari livelli (errori, warning, info, debug)
 ```
 
 
