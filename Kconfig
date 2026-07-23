@@ -38,8 +38,12 @@ config APP_MODULE_TEMP
 	depends on GPIO
 	help
 	  Legge il sensore di temperatura interno alla pressione di sw0.
-	  Copre: Sensor API, sensor_sample_fetch/channel_get, struct sensor_value.
 	  
+config APP_MODULE_THREAD
+	bool "Lettura contatore thread"
+	depends on GPIO
+	help
+	  Stampa il contatore di blink.
 
 endmenu
 

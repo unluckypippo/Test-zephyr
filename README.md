@@ -17,24 +17,24 @@ Test-zephyr/
 ├── CMakeLists.txt          # build; include i moduli con target_sources_ifdef
 ├── Kconfig                 # opzioni CONFIG_APP_MODULE_* (+ source Kconfig.zephyr)
 ├── prj.conf                # quale modulo è attivo in questa build
-├── app.overlay		    # modifica configurazioni hardware senza modificare il DT originale
+├── app.overlay		        # modifica configurazioni hardware senza modificare il DT originale
 ├── README.md
 └── src/
     ├── main.c              # dispatcher: chiama il modulo abilitato
-    ├── modules.h           # prototipi
+    ├── modules.h           # moduli
     └── modules/
         ├── countdown.c     # countdown da pulsante + LED rosso/blu alternati
-        ├── led_blink.c     # blink base
-		├── temp_read.c	    # stampa la temperatura del chip  
-        └── button_irq.c    # pulsante a interrupt,  debounce, semaforo
-
+        ├── blink.c         # blink base
+		├── temp_read.c	    # temperatura del die via Sensor API  
+        ├── button_i.c      # pulsante a interrupt,  debounce, semaforo
+        └── thread_mg.c     # thread statico con K_THREAD_DEFINE, blink + contatore
 ```
 
 
 ## Build ed Esecuzione
 ```bash
 
-west build -p always -b nucleo_l55ze_q/stm32l552xx <path/to/app>
+west build -p always -b nucleo_l552ze_q/stm32l552xx <path/to/app>
 
 west flash --runner openocd
 
