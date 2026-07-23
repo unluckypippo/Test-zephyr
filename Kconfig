@@ -40,10 +40,15 @@ config APP_MODULE_TEMP
 	  Legge il sensore di temperatura interno alla pressione di sw0.
 	  
 config APP_MODULE_THREAD
-	bool "Lettura contatore thread"
+	bool "Esercizio thread + contatore"
 	depends on GPIO
 	help
 	  Stampa il contatore di blink.
+
+config APP_MODULE_LOG
+	bool "confronto tipi di log"
+	help
+	  confronta i vari tipi di log
 
 endmenu
 

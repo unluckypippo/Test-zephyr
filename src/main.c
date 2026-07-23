@@ -21,6 +21,9 @@ int main(void)
 	#elif defined(CONFIG_APP_MODULE_THREAD)
 		printk("Modulo attivo: thread_mg\n");
 		module_thread_run();
+	#elif defined(CONFIG_APP_MODULE_LOG)
+		printk("Modulo attivo: logging_system\n");
+		module_log_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif

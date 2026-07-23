@@ -21,4 +21,8 @@ void module_temp_read_run(void);
 void module_thread_run(void);
 #endif
 
+#ifdef CONFIG_APP_MODULE_LOG
+void module_log_run (void);
+#endif
+
 #endif /* APP_MODULES_H */
