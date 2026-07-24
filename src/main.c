@@ -3,19 +3,20 @@
 #include "modules.h"
 
 //Esercizio sulla gestione della memoria 
+/*
 static const uint8_t buffer_const[1024] = {1};   // atteso: flash (.rodata)
 static uint8_t buffer_bss[1024];                  // atteso: RAM (.bss)
 static uint8_t buffer_data[1024] = {1};           // atteso: RAM (.data) + flash
-
+*/
 
 int main(void)
 {
-
+/*
 	buffer_bss[0] = buffer_const[0];
     buffer_data[0] = buffer_bss[0];
     printk("const=%p bss=%p data=%p\n",
            (void *)buffer_const, (void *)buffer_bss, (void *)buffer_data);
-
+*/
 	printk("=== Test Zephyr: avvio ===\n");
 
 	#if defined(CONFIG_APP_MODULE_COUNTDOWN)
