@@ -18,24 +18,25 @@ int main(void)
            (void *)buffer_const, (void *)buffer_bss, (void *)buffer_data);
 */
 	printk("=== Test Zephyr: avvio ===\n");
+	printk("Modulo attivo : ");
 
 	#if defined(CONFIG_APP_MODULE_COUNTDOWN)
-		printk("Modulo attivo: countdown\n");
+		printk("countdown\n");
 		module_countdown_run();
 	#elif defined(CONFIG_APP_MODULE_BLINK)
-		printk("Modulo attivo: blink\n");
+		printk("blink\n");
 		module_blink_run();
 	#elif defined(CONFIG_APP_MODULE_BUTTON_I)
-		printk("Modulo attivo: button_i\n");
+		printk("button_i\n");
 		module_button_i_run();
 	#elif defined(CONFIG_APP_MODULE_TEMP)
-		printk("Modulo attivo: temp_read\n");
+		printk("temp_read\n");
 		module_temp_read_run();
 	#elif defined(CONFIG_APP_MODULE_THREAD)
-		printk("Modulo attivo: thread_mg\n");
+		printk("thread_mg\n");
 		module_thread_run();
 	#elif defined(CONFIG_APP_MODULE_LOG)
-		printk("Modulo attivo: logging_system\n");
+		printk("logging_system\n");
 		module_log_run();
 	#else
 		printk("Nessun modulo attivo\n");
