@@ -50,6 +50,12 @@ config APP_MODULE_LOG
 	help
 	  confronta i vari tipi di log
 
+config APP_MODULE_CONDVAR
+	bool "gestione dei thread tramite condvar"
+	help
+	  Esempio Produttore e Consumatore con buffer circolare condiviso, protetto da mutex e regolato tramite 
+	  condition variables
+
 endmenu
 
 source "Kconfig.zephyr"

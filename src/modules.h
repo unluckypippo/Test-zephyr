@@ -25,4 +25,8 @@ void module_thread_run(void);
 void module_log_run (void);
 #endif
 
+#ifdef CONFIG_APP_MODULE_CONDVAR
+void module_condvar_run(void);
+#endif
+
 #endif /* APP_MODULES_H */

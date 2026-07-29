@@ -38,6 +38,9 @@ int main(void)
 	#elif defined(CONFIG_APP_MODULE_LOG)
 		printk("logging_system\n");
 		module_log_run();
+	#elif defined (CONFIG_APP_MODULE_CONDVAR)
+		printk("condvar\n");
+		module_condvar_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif

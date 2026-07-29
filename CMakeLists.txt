@@ -12,3 +12,4 @@ target_sources_ifdef(CONFIG_APP_MODULE_BUTTON_I app PRIVATE src/modules/button_i
 target_sources_ifdef(CONFIG_APP_MODULE_TEMP app PRIVATE src/modules/temp_read.c)
 target_sources_ifdef(CONFIG_APP_MODULE_THREAD app PRIVATE src/modules/thread_mg.c)
 target_sources_ifdef(CONFIG_APP_MODULE_LOG app PRIVATE src/modules/logging_system.c)
+target_sources_ifdef(CONFIG_APP_MODULE_CONDVAR app PRIVATE src/modules/condvar.c)
