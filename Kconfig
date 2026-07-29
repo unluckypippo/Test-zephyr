@@ -56,6 +56,11 @@ config APP_MODULE_CONDVAR
 	  Esempio Produttore e Consumatore con buffer circolare condiviso, protetto da mutex e regolato tramite 
 	  condition variables
 
+config APP_MODULE_USERSPACE
+	bool "errore accesso da userspace"
+	help	
+	  Esempio di messaggio errore accesso negato ad una variabile tramite thread non privilegiato
+
 endmenu
 
 source "Kconfig.zephyr"

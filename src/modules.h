@@ -29,4 +29,8 @@ void module_log_run (void);
 void module_condvar_run(void);
 #endif
 
+#ifdef CONFIG_APP_MODULE_USERSPACE
+void module_user_run(void);
+#endif
+
 #endif /* APP_MODULES_H */

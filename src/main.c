@@ -41,6 +41,9 @@ int main(void)
 	#elif defined (CONFIG_APP_MODULE_CONDVAR)
 		printk("condvar\n");
 		module_condvar_run();
+	#elif defined (CONFIG_APP_MODULE_USERSPACE)
+		printk("userspace\n");
+		module_user_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif
