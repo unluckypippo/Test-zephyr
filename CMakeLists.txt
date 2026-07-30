@@ -13,4 +13,5 @@ target_sources_ifdef(CONFIG_APP_MODULE_TEMP app PRIVATE src/modules/temp_read.c)
 target_sources_ifdef(CONFIG_APP_MODULE_THREAD app PRIVATE src/modules/thread_mg.c)
 target_sources_ifdef(CONFIG_APP_MODULE_LOG app PRIVATE src/modules/logging_system.c)
 target_sources_ifdef(CONFIG_APP_MODULE_CONDVAR app PRIVATE src/modules/condvar.c)
-target_sources_ifdef(CONFIG_APP_MODULE_USERSPACE app PRIVATE src/modules/userspace.c)
+# cambia userspace.c per vedere il primo modulo
+target_sources_ifdef(CONFIG_APP_MODULE_USERSPACE app PRIVATE src/modules/userspace_2.c)
