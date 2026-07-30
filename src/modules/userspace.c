@@ -1,6 +1,6 @@
 /*
-    Questo esercizio è un test per vedere come la MPU blocca l'accesso ad elementi protetti ad un 
-    thread in modalità utente.
+    Questo esercizio è un test per vedere come la MPU blocca l'accesso ad elementi kernel ad un 
+    thread in modalità utente e come si può darne l'accesso.
     Il risultato ottenuto è il seguente :
     ===============================================================
 
@@ -9,15 +9,18 @@
     ng Zephyr OS build v4.4.0-9180-g9885b002c1bd ***
     === Test Zephyr: avvio ===
     Modulo attivo : userspace
-    Modulo UserSpace attivo: Test accesso negato
-    thread in user mode
-    ***** MPU FAULT *****
-    Data Access Violation
-    MMFAR Address: 0x20001f60
+    Modulo UserSpace attivo: Test accesso kernel object da user thread
+    thread in user mode con accesso
+    ______________________________________
+    Il thread user_thread_1 ha accesso al semaforo  
+    ======================================
+    thread in user mode senza accesso
+    ______________________________________
     r0/a1:  0x00000000  r1/a2:  0x00000000  r2/a3:  0x00000000
-    r3/a4:  0x00000014 r12/ip:  0x080074c5 r14/lr:  0x08000f6b
-    xpsr:  0x61000000
-    Faulting instruction address (r15/pc): 0x08000f6a
+    r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000000
+    xpsr:  0x00000000
+    Faulting instruction address (r15/pc): 0x00000000
+
 
     ============================================================
 */
@@ -28,28 +31,29 @@
 #include <zephyr/sys/printk.h>
 #include "modules.h"
 
-#define PRIORITY -1
+K_SEM_DEFINE(sem, 0, 1);
+#define STACK_SIZE 1024
+#define PRIORITY 5
 
-struct k_thread user_id;
-K_THREAD_STACK_DEFINE(stack, 1024);
-static void user_thread (void *p1, void *p2, void *p3){
-    ARG_UNUSED(p2);
-    ARG_UNUSED(p3);
-    int *ptr = (int *)p1;
-    printk("thread in user mode\n");
-    while(true){
-        *ptr ++;
-        printk(" %d -", *ptr);
-        k_msleep(500);
-    }
+static void user_thread_1 (void *p1, void *p2, void *p3){
+    printk("thread in user mode con accesso\n");
+    printk("______________________________________\n");
+    if (k_sem_take(&sem, K_FOREVER) == 0)
+        printk(" Il thread user_thread_1 ha accesso al semaforo  \n");
+    printk("======================================\n");
+}
+static void user_thread_2 (void *p1, void *p2, void *p3){
+    printk("thread in user mode senza accesso\n");
+    printk("______________________________________\n");
+    k_sem_take(&sem, K_FOREVER);
 }
 
-
+K_THREAD_DEFINE(user_thread_id_1, STACK_SIZE, user_thread_1, NULL, NULL, NULL, PRIORITY, K_USER, 0);
+K_THREAD_DEFINE(user_thread_id_2, STACK_SIZE, user_thread_2, NULL, NULL, NULL, PRIORITY, K_USER, 0);
 
 void module_user_run(void){
-    printk("Modulo UserSpace attivo: Test accesso negato\n");
-    int var = 5;
-
-    k_thread_create(&user_id, stack, K_THREAD_STACK_SIZEOF(stack), user_thread, &var, NULL, NULL, PRIORITY, K_USER, K_MSEC(0));
+    printk("Modulo UserSpace attivo: Test accesso kernel object da user thread\n");
+    k_object_access_grant(&sem, user_thread_id_1);     
+    k_sem_give(&sem);
     k_sleep(K_FOREVER);
 }
