@@ -15,3 +15,4 @@ target_sources_ifdef(CONFIG_APP_MODULE_LOG app PRIVATE src/modules/logging_syste
 target_sources_ifdef(CONFIG_APP_MODULE_CONDVAR app PRIVATE src/modules/condvar.c)
 # cambia userspace.c per vedere il primo modulo
 target_sources_ifdef(CONFIG_APP_MODULE_USERSPACE app PRIVATE src/modules/userspace_2.c)
+target_sources_ifdef(CONFIG_APP_MODULE_SYSCALL app PRIVATE src/modules/syscall_user.c)

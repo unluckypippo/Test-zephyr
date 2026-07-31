@@ -61,6 +61,11 @@ config APP_MODULE_USERSPACE
 	help	
 	  Esempio di messaggio errore accesso negato ad una variabile tramite thread non privilegiato
 
+config APP_MODULE_SYSCALL
+	bool "validazione puntatore in syscall"
+	help	
+	  Un thread user chiama una syscall passando come buffer un puntatore a memoria che non gli appartiene
+
 endmenu
 
 source "Kconfig.zephyr"

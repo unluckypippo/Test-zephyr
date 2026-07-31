@@ -33,4 +33,8 @@ void module_condvar_run(void);
 void module_user_run(void);
 #endif
 
+#ifdef CONFIG_APP_MODULE_SYSCALL
+void module_syscall_ptr_run(void);
+#endif
+
 #endif /* APP_MODULES_H */

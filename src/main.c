@@ -44,6 +44,9 @@ int main(void)
 	#elif defined (CONFIG_APP_MODULE_USERSPACE)
 		printk("userspace\n");
 		module_user_run();
+	#elif defined (CONFIG_APP_MODULE_SYSCALL)
+		printk("syscall\n");
+		module_syscall_ptr_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif
