@@ -1,5 +1,20 @@
 /*
     Nuovo nucleo Test accesso ad una partizione di memoria protetta;
+    === Test Zephyr: avvio ===
+    Modulo attivo : userspace
+    Modulo UserSpace attivo: Test accesso partizione di memoria da user thread
+    thread con accesso 
+    thread in user mode 
+    valore = 3 
+    Thread senza accesso
+    thread in user mode 
+    ***** MPU FAULT *****
+    Data Access Violation
+    MMFAR Address: 0x20000040
+    r0/a1:  0x080486fe  r1/a2:  0x00000000  r2/a3:  0x00000000
+    r3/a4:  0x20000040 r12/ip:  0x0804699d r14/lr:  0x08041c59
+    xpsr:  0x61000000
+    Faulting instruction address (r15/pc): 0x08041c5c
 */
 
 
@@ -14,8 +29,8 @@ K_APP_DMEM(my_part) int var = 3;
 struct k_mem_domain dom;
 
 
-K_THREAD_STACK_DEFINE(my_stack, 4096);
-K_THREAD_STACK_DEFINE(my_stack2, 4096);
+K_THREAD_STACK_DEFINE(my_stack, 1024);
+K_THREAD_STACK_DEFINE(my_stack2, 1024);
 struct k_thread my_thread;
 struct k_thread my_thread2;
 
