@@ -28,9 +28,11 @@ Test-zephyr/
 		├── temp_read.c	       # temperatura del die via Sensor API  
         ├── button_i.c         # pulsante a interrupt,  debounce, semaforo
         ├── thread_mg.c        # thread statico con K_THREAD_DEFINE, blink + contatore
-        └── logging_system.c   # messaggi log a vari livelli (errori, warning, info, debug)
+        ├── logging_system.c   # messaggi log a vari livelli (errori, warning, info, debug)
+        ├── userspace.c        # protezione MCU da accessi non validi
+        ├── userspace_2.c      # test accesso a partizioni di memoria protetta
+        └── syscall_user.c     # verifica gestione degli accessi con syscall
 ```
-
 
 ## Build ed Esecuzione (TZEN = 0)
 Per modalità secure, con Trust Zone disabilitata.
