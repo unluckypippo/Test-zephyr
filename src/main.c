@@ -17,41 +17,27 @@ int main(void)
     printk("const=%p bss=%p data=%p\n",
            (void *)buffer_const, (void *)buffer_bss, (void *)buffer_data);
 */
-	printk("=== Test Zephyr: avvio ===\n");
-	printk("Modulo attivo : ");
-
+	printk("Test Zephyr: avvio\n");
 	#if defined(CONFIG_APP_MODULE_COUNTDOWN)
-		printk("countdown\n");
 		module_countdown_run();
 	#elif defined(CONFIG_APP_MODULE_BLINK)
-		printk("blink\n");
 		module_blink_run();
 	#elif defined(CONFIG_APP_MODULE_BUTTON_I)
-		printk("button_i\n");
 		module_button_i_run();
 	#elif defined(CONFIG_APP_MODULE_TEMP)
-		printk("temp_read\n");
 		module_temp_read_run();
 	#elif defined(CONFIG_APP_MODULE_THREAD)
-		printk("thread_mg\n");
 		module_thread_run();
 	#elif defined(CONFIG_APP_MODULE_LOG)
-		printk("logging_system\n");
 		module_log_run();
 	#elif defined (CONFIG_APP_MODULE_CONDVAR)
-		printk("condvar\n");
 		module_condvar_run();
 	#elif defined (CONFIG_APP_MODULE_USERSPACE)
-		printk("userspace\n");
 		module_user_run();
 	#elif defined (CONFIG_APP_MODULE_SYSCALL)
-		printk("syscall\n");
 		module_syscall_ptr_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif
-
-	
-		return 0;
-
+	return 0;
 }
