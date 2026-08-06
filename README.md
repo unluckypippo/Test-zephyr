@@ -1,6 +1,7 @@
 # Zephyr playground
 Freestanding app creata con lo scopo di sperimentare le varie funzionalità di zephyr RTOS.
-Le funzionalità sono isolate tra loro e attivabili tramite kconfig.
+Le funzionalità sono isolate tra loro e attivabili tramite kconfig (controllare le dipendenze per ogni modulo e attivarle nel file config: es. per
+modulo thread_mg attivare i moduli CONFIG_THREAD_...).
 
 ## Obbiettivo
 - Prendere confidenza con il flusso di lavoro west + CMake * Kconfig.
