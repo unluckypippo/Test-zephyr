@@ -16,3 +16,4 @@ target_sources_ifdef(CONFIG_APP_MODULE_CONDVAR app PRIVATE src/modules/condvar.c
 # cambia userspace.c per vedere il primo modulo
 target_sources_ifdef(CONFIG_APP_MODULE_USERSPACE app PRIVATE src/modules/userspace_2.c)
 target_sources_ifdef(CONFIG_APP_MODULE_SYSCALL app PRIVATE src/modules/syscall_user.c)
+target_sources_ifdef(CONFIG_APP_MODULE_PSA app PRIVATE src/modules/psa_key.c)

@@ -5,6 +5,7 @@ Le funzionalità sono isolate tra loro e attivabili tramite kconfig.
 ## Obbiettivo
 - Prendere confidenza con il flusso di lavoro west + CMake * Kconfig.
 - Provare i sottosistemi principali (GPIO, thread, log, ...)
+- Testare sistemi di sicurezza.
 - Creare un punto di riferimento con esempi funzionanti.
 
 ## Hardware Utilizzato
@@ -31,8 +32,11 @@ Test-zephyr/
         ├── logging_system.c   # messaggi log a vari livelli (errori, warning, info, debug)
         ├── userspace.c        # protezione MCU da accessi non validi
         ├── userspace_2.c      # test accesso a partizioni di memoria protetta
-        └── syscall_user.c     # verifica gestione degli accessi con syscall
+        ├── syscall_user.c     # verifica gestione degli accessi con syscall
+        └── psa_key.c          # crea una chiave persistente per criptare/decriptare un testo
+
 ```
+
 
 ## Build ed Esecuzione (TZEN = 0)
 Per modalità secure, con Trust Zone disabilitata.
@@ -110,3 +114,7 @@ Un binario senza `/ns` non fa boot con `TZEN=1`. Per tornare indietro serve la r
 STM32_Programmer_CLI -c port=SWD mode=HotPlug -tzenreg
  
 ```
+
+<!--
+https://www.reddit.com/r/embedded/comments/1gxutp0/trust_zone_and_tfm_what_is_it_how_does_it_work/?tl=it per capire come funziona trustzone  
+--> 

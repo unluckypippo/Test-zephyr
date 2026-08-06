@@ -37,4 +37,8 @@ void module_user_run(void);
 void module_syscall_ptr_run(void);
 #endif
 
+#ifdef CONFIG_APP_MODULE_PSA
+void module_psa_key_run(void);
+#endif
+
 #endif /* APP_MODULES_H */

@@ -36,6 +36,8 @@ int main(void)
 		module_user_run();
 	#elif defined (CONFIG_APP_MODULE_SYSCALL)
 		module_syscall_ptr_run();
+	#elif defined (CONFIG_APP_MODULE_PSA)
+		module_psa_key_run();
 	#else
 		printk("Nessun modulo attivo\n");
 	#endif

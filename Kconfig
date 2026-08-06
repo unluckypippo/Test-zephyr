@@ -66,6 +66,12 @@ config APP_MODULE_SYSCALL
 	help	
 	  Un thread user chiama una syscall passando come buffer un puntatore a memoria che non gli appartiene
 
+config APP_MODULE_PSA
+	bool "cifratura di testo sample"
+	help
+	  Genera una chiave di cifratura che viene usata per criptare prima e poi decriptare un testo.
+	  La chiave viene poi distrutta
+
 endmenu
 
 source "Kconfig.zephyr"
